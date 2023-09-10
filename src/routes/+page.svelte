@@ -1,3 +1,1 @@
-<div class="container h-full mx-auto flex">
-	Slot
-</div>
+<div class="container h-full mx-auto flex">Slot</div>

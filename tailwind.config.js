@@ -1,9 +1,9 @@
-import { join } from 'path'
+import { join } from 'path';
 
+import { skeleton } from '@skeletonlabs/tw-plugin';
 import forms from '@tailwindcss/forms';
 import typography from '@tailwindcss/typography';
-import { skeleton } from '@skeletonlabs/tw-plugin';
-import { harmony } from './src/harmony'
+import { harmony } from './src/harmony';
 /** @type {import('tailwindcss').Config} */
 export default {
 	darkMode: 'class',
