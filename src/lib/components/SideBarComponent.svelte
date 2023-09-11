@@ -10,7 +10,13 @@
 </script>
 
 <AppRail>
-	<AppRailTile bind:group={currentTile} name="tile-1" value={0} title="tile-1">Tile 1</AppRailTile>
-	<AppRailTile bind:group={currentTile} name="tile-2" value={1} title="tile-2">Tile 2</AppRailTile>
-	<AppRailTile bind:group={currentTile} name="tile-3" value={2} title="tile-3">Tile 3</AppRailTile>
+	<AppRailTile bind:group={currentTile} name="tile-1" value={0} title="tile-1"
+		>Collection</AppRailTile
+	>
+	<AppRailTile bind:group={currentTile} name="tile-2" value={1} title="tile-2">Rotation</AppRailTile
+	>
+	<AppRailTile bind:group={currentTile} name="tile-3" value={2} title="tile-3"
+		>Experience</AppRailTile
+	>
+	<AppRailTile bind:group={currentTile} name="tile-4" value={3} title="tile-4">Engage</AppRailTile>
 </AppRail>
