@@ -28,7 +28,7 @@
 		<SideBarComponent />
 	</svelte:fragment>
 
-	<svelte:fragment slot="pageHeader">Page Header</svelte:fragment>
+	<svelte:fragment slot="pageHeader"><h1>Page Header</h1></svelte:fragment>
 
 	<slot />
 

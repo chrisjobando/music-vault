@@ -18,7 +18,6 @@
 			cursor="cursor-pointer"
 			initials={fallbackInitials}
 			background="bg-tertiary-500"
-			border="border-4 border-surface-300-600-token hover:!border-primary-500"
 		/>
 	</div>
 </AppBar>
