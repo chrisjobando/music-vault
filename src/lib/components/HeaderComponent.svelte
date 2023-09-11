@@ -1,9 +1,8 @@
-<script>
+<script lang="ts">
 	// Components
 	import { AppBar, Avatar } from '@skeletonlabs/skeleton';
 
 	/**
-	 * @type {string}
 	 * @description The fallback initials for the avatar
 	 */
 	const fallbackInitials = 'CO';

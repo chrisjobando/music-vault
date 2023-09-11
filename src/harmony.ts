@@ -1,5 +1,6 @@
+import type { CustomThemeConfig } from '@skeletonlabs/tw-plugin/dist';
 
-export const harmony = {
+export const harmony: CustomThemeConfig = {
     name: 'harmony',
     properties: {
 		// =~= Theme Properties =~=

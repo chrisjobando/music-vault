@@ -1,9 +1,8 @@
-<script>
+<script lang="ts">
 	// Components
 	import { AppRail, AppRailTile } from '@skeletonlabs/skeleton';
 
 	/**
-	 * @type {number}
 	 * @description The current tile index
 	 */
 	let currentTile = 0;
