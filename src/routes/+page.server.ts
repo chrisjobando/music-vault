@@ -1,13 +1,12 @@
-import { supabase } from "$lib/server/supabaseClient";
+import { redirect } from '@sveltejs/kit'
+import type { PageServerLoad } from './$types'
 
-export async function load() {
-  const { data: users, error  } = await supabase.from("users").select();
+export const load: PageServerLoad = async ({ url, locals: { getSession } }) => {
+  const session = await getSession()
 
-  if (error) {
-    console.error(error)
+  if (!session) {
+    throw redirect(303, '/signin')
   }
 
-  return {
-    users: users ?? [],
-  };
+  return { url: url.origin }
 }
