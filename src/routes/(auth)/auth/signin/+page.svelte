@@ -28,10 +28,15 @@
   });
 </script>
 
+<svelte:head>
+  <title>Sign in to Music Vault</title>
+  <meta name="description" content="Sign in to Music Vault" />
+</svelte:head>
+
 <form method="POST" use:enhance class="content-center justify-center p-8">
-  <div class="loginContainer mx-auto rounded-md bg-surface-500 py-8">
+  <div class="authContainer mx-auto rounded-md bg-surface-500 py-8">
     <div class="mx-auto">
-      <h1 class="my-16 text-center text-5xl font-bold">Log in to Music Vault</h1>
+      <h1 class="my-16 text-center text-5xl font-bold">Sign in to Music Vault</h1>
 
       <hr class="mx-24 my-8 h-px !border-none bg-surface-400" />
 
@@ -70,7 +75,7 @@
           </div>
         </label>
 
-        <button class="variant-filled-primary btn my-8 w-full">Log in</button>
+        <button class="variant-filled-primary btn my-8 w-full">Sign in</button>
 
         <!-- <p class="text-center underline">Forgot your password?</p> -->
       </div>
@@ -78,8 +83,10 @@
       <hr class="mx-24 my-8 h-px !border-none bg-surface-400" />
 
       <p class="py-4 text-center">
-        Don't have an account? <a class="underline" data-sveltekit-preload-data="tap" href="/signup"
-          >Sign up for Music Vault</a
+        Don't have an account? <a
+          class="underline"
+          data-sveltekit-preload-data="tap"
+          href="/auth/signup">Sign up for Music Vault</a
         >.
       </p>
     </div>
@@ -87,7 +94,7 @@
 </form>
 
 <style>
-  .loginContainer {
+  .authContainer {
     max-width: 736px;
   }
 </style>

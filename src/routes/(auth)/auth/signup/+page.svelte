@@ -5,8 +5,13 @@
   let showPassword = false;
 </script>
 
+<svelte:head>
+  <title>Sign up for Music Vault</title>
+  <meta name="description" content="Sign up for Music Vault" />
+</svelte:head>
+
 <div class="content-center justify-center p-8">
-  <div class="loginContainer mx-auto rounded-md bg-surface-500 py-8">
+  <div class="authContainer mx-auto rounded-md bg-surface-500 py-8">
     <div class="mx-auto">
       <h1 class="my-16 text-center text-5xl font-bold">Sign up for Music Vault</h1>
 
@@ -67,8 +72,8 @@
       <hr class="mx-24 my-8 h-px !border-none bg-surface-400" />
 
       <p class="py-4 text-center">
-        Have an account? <a class="underline" data-sveltekit-preload-data="tap" href="/login"
-          >Log in</a
+        Have an account? <a class="underline" data-sveltekit-preload-data="tap" href="/auth/signin"
+          >Sign in</a
         >.
       </p>
     </div>
@@ -76,7 +81,7 @@
 </div>
 
 <style>
-  .loginContainer {
+  .authContainer {
     max-width: 736px;
   }
 </style>
