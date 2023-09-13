@@ -1,25 +1,51 @@
 <script lang="ts">
+  import { enhance } from '$app/forms';
+  import { getToastStore } from '@skeletonlabs/skeleton';
+  import { afterUpdate } from 'svelte';
+  import type { ActionData } from './$types';
+
   /**
-   * @description - Toggles password visibility
+   * @description Toggles password visibility
    */
   let showPassword = false;
+
+  /**
+   * @description Form data
+   */
+  export let form: ActionData;
+
+  // Initialize toast store - used to queue toast messages
+  const toastStore = getToastStore();
+
+  // Show toast message if there is an error
+  afterUpdate(() => {
+    if (form?.error !== undefined) {
+      toastStore.trigger({
+        message: form.error,
+        background: 'variant-filled-warning'
+      });
+    }
+  });
 </script>
 
-<div class="content-center justify-center p-8">
-  <div class="loginContainer mx-auto bg-surface-500 py-8 text-center">
+<form method="POST" use:enhance class="content-center justify-center p-8">
+  <div class="loginContainer mx-auto rounded-md bg-surface-500 py-8">
     <div class="mx-auto">
-      <h1 class="my-16 text-5xl font-bold">Log in to Music Vault</h1>
+      <h1 class="my-16 text-center text-5xl font-bold">Log in to Music Vault</h1>
 
-      <hr class="mx-24 my-8" />
+      <hr class="mx-24 my-8 h-px !border-none bg-surface-400" />
 
       <div class="mx-auto w-full max-w-sm">
         <label class="label pb-4">
           <span>Email</span>
           <input
-            class="input w-full px-3 py-3 pr-16"
+            required
             type="email"
-            placeholder="john@example.com"
+            name="email"
             autocomplete="email"
+            value={form?.values?.email ?? ''}
+            placeholder="john@example.com"
+            class="input w-full px-3 py-3 pr-16"
           />
         </label>
 
@@ -29,23 +55,36 @@
             <div class="absolute inset-y-0 right-0 z-10 flex items-center px-2">
               <input id="toggle" class="hidden" type="checkbox" bind:checked={showPassword} />
               <label
+                for="toggle"
                 class="flex w-12 cursor-pointer justify-center rounded bg-gray-300 px-2 py-1 text-sm text-gray-600 hover:bg-gray-400"
-                for="toggle">{showPassword ? 'Hide' : 'Show'}</label
+                >{showPassword ? 'Hide' : 'Show'}</label
               >
             </div>
             <input
-              class="input w-full appearance-none px-3 py-3 pr-16 focus:outline-none"
-              type={showPassword ? 'text' : 'password'}
+              required
+              name="password"
               placeholder="Password"
+              type={showPassword ? 'text' : 'password'}
+              class="input w-full appearance-none px-3 py-3 pr-16 focus:outline-none"
             />
           </div>
         </label>
 
         <button class="variant-filled-primary btn my-8 w-full">Log in</button>
+
+        <!-- <p class="text-center underline">Forgot your password?</p> -->
       </div>
+
+      <hr class="mx-24 my-8 h-px !border-none bg-surface-400" />
+
+      <p class="py-4 text-center">
+        Don't have an account? <a class="underline" data-sveltekit-preload-data="tap" href="/signup"
+          >Sign up for Music Vault</a
+        >.
+      </p>
     </div>
   </div>
-</div>
+</form>
 
 <style>
   .loginContainer {
