@@ -7,7 +7,15 @@ module.exports = {
     'prettier',
     'plugin:svelte/recommended'
   ],
-  plugins: ['@typescript-eslint'],
+  parserOptions: {
+    sourceType: 'module',
+    ecmaVersion: 2020
+  },
+  env: {
+    browser: true,
+    es2017: true,
+    node: true
+  },
   ignorePatterns: ['*.cjs'],
   overrides: [
     {
@@ -17,16 +25,5 @@ module.exports = {
         parser: '@typescript-eslint/parser'
       }
     }
-  ],
-  parserOptions: {
-    sourceType: 'module',
-    ecmaVersion: 2020,
-    extraFileExtensions: ['.svelte'],
-    project: './tsconfig.json'
-  },
-  env: {
-    browser: true,
-    es2017: true,
-    node: true
-  }
+  ]
 };
