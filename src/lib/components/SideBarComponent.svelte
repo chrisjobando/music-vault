@@ -1,18 +1,13 @@
 <script lang="ts">
   // Components
   import { AppRail, AppRailTile } from '@skeletonlabs/skeleton';
+  // Interfaces
+  import type { Profiles } from '$lib/utils';
 
   /**
    * @description User's account data
    */
-  export let userAccount: {
-    id: string;
-    display_name: string;
-    first_name: string;
-    last_name: string | null;
-    avatar_url: string | null;
-    user_id: string;
-  } | null;
+  export let userProfile: Profiles | null;
 
   /**
    * @description The current tile index
@@ -20,7 +15,7 @@
   let currentTile = 0;
 </script>
 
-{#if userAccount}
+{#if userProfile}
   <AppRail>
     <AppRailTile bind:group={currentTile} name="tile-1" value={0} title="tile-1"
       >Collection</AppRailTile
