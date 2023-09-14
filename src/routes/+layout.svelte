@@ -6,13 +6,7 @@
   import { invalidate } from '$app/navigation';
   import { onMount } from 'svelte';
   // Skeleton UI Components
-  import {
-    AppShell,
-    Toast,
-    autoModeWatcher,
-    initializeStores,
-    storePopup
-  } from '@skeletonlabs/skeleton';
+  import { Toast, autoModeWatcher, initializeStores, storePopup } from '@skeletonlabs/skeleton';
   // Floating UI for Popups
   import { arrow, autoUpdate, computePosition, flip, offset, shift } from '@floating-ui/dom';
 
@@ -32,7 +26,6 @@
    */
   export let data;
 
-  let { supabase, session } = data;
   $: ({ supabase, session } = data);
 
   onMount(() => {
@@ -54,18 +47,4 @@
 
 <Toast />
 
-<AppShell regionPage="relative" slotPageHeader="sticky top-0 z-10">
-  <!-- <svelte:fragment slot="header">
-		<HeaderComponent />
-	</svelte:fragment>
-
-	<svelte:fragment slot="sidebarLeft">
-		<SideBarComponent />
-	</svelte:fragment>
-
-	<svelte:fragment slot="pageHeader"><h1>Page Header</h1></svelte:fragment> -->
-
-  <slot />
-
-  <!-- <svelte:fragment slot="pageFooter">Page Footer</svelte:fragment> -->
-</AppShell>
+<slot />
