@@ -10,7 +10,7 @@
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch",
     "lint": "prettier --check --plugin prettier-plugin-svelte --plugin prettier-plugin-tailwindcss . && eslint .",
     "format": "prettier --write --plugin prettier-plugin-svelte  --plugin prettier-plugin-tailwindcss .",
-    "update-db-types": "bash ./scripts/update_db_types.sh"
+    "update-schema": "bash ./scripts/update_schema.sh"
   },
   "devDependencies": {
     "@skeletonlabs/skeleton": "2.0.0",
