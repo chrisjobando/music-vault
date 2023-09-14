@@ -25,6 +25,6 @@ export const actions: Actions = {
       return fail(500, fault(signUpError.message, { email }));
     }
 
-    return success('Please check your email to confirm account creation.');
+    return success('Please check your email to confirm account creation.', { email });
   }
 };

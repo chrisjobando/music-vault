@@ -7,7 +7,12 @@
    */
   export let form: ActionData;
 
+  /**
+   * @description Page data
+   */
   export let data: PageData;
+
+  $: ({ userProfile } = data);
 </script>
 
 <svelte:head>
@@ -44,7 +49,7 @@
             name="display_name"
             placeholder="JohnDoe123"
             class="input w-full px-3 py-3 pr-16"
-            value={data?.userAccount?.display_name ?? ''}
+            value={form?.userProfile?.display_name ?? userProfile?.display_name ?? ''}
           />
         </label>
 
@@ -57,7 +62,7 @@
             placeholder="John"
             autocomplete="given-name"
             class="input w-full px-3 py-3 pr-16"
-            value={data?.userAccount?.first_name ?? ''}
+            value={form?.userProfile?.first_name ?? userProfile?.first_name ?? ''}
           />
         </label>
 
@@ -69,7 +74,7 @@
             placeholder="Doe"
             autocomplete="family-name"
             class="input w-full px-3 py-3 pr-16"
-            value={data?.userAccount?.last_name ?? ''}
+            value={form?.userProfile?.last_name ?? userProfile?.last_name ?? ''}
           />
         </label>
 
@@ -80,7 +85,7 @@
             name="avatar_url"
             placeholder="https://picsum.photos/100"
             class="input w-full px-3 py-3 pr-16"
-            value={data?.userAccount?.avatar_url ?? ''}
+            value={form?.userProfile?.avatar_url ?? userProfile?.avatar_url ?? ''}
           />
         </label>
 

@@ -9,16 +9,16 @@
    */
   export let data;
 
-  $: ({ userAccount } = data);
+  $: ({ userProfile } = data);
 </script>
 
 <AppShell regionPage="relative" slotPageHeader="sticky top-0 z-10">
   <svelte:fragment slot="header">
-    <HeaderComponent {userAccount} />
+    <HeaderComponent {userProfile} />
   </svelte:fragment>
 
   <svelte:fragment slot="sidebarLeft">
-    <SideBarComponent {userAccount} />
+    <SideBarComponent {userProfile} />
   </svelte:fragment>
   <slot />
 </AppShell>

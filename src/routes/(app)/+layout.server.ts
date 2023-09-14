@@ -11,13 +11,13 @@ export const load: LayoutServerLoad = async ({ url, locals: { supabase, getSessi
   const user = session.user!;
 
   // Get user's profile
-  const { data: userAccount } = await supabase
+  const { data: userProfile } = await supabase
     .from('profiles')
     .select(`*`)
     .match({ user_id: user.id })
     .maybeSingle();
 
-  if (!userAccount && url.pathname !== '/profile/update') {
+  if (!userProfile && url.pathname !== '/profile/update') {
     throw redirect(307, '/profile/update');
   }
 
@@ -28,5 +28,5 @@ export const load: LayoutServerLoad = async ({ url, locals: { supabase, getSessi
     }
   }
 
-  return { userAccount, website: url.origin };
+  return { userProfile };
 };

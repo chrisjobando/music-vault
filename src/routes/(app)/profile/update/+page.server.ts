@@ -32,7 +32,7 @@ export const actions: Actions = {
       .maybeSingle();
 
     if (existingUserProfileError) {
-      return fail(500, fault('Server error. Try again later', inputProfile));
+      return fail(500, fault('Server error. Try again later', { userProfile: inputProfile }));
     }
 
     if (!userProfile) {
@@ -42,7 +42,7 @@ export const actions: Actions = {
         .select();
 
       if (createProfileError) {
-        return fail(500, fault('Server error. Try again later', inputProfile));
+        return fail(500, fault('Server error. Try again later', { userProfile: inputProfile }));
       }
 
       return success('Your profile was created successfully.', { userProfile: createdProfile });
@@ -53,7 +53,7 @@ export const actions: Actions = {
       .match({ user_id })
       .select();
     if (updateProfileError) {
-      return fail(500, fault('Server error. Try again later', inputProfile));
+      return fail(500, fault('Server error. Try again later', { userProfile: inputProfile }));
     }
 
     return success('Your profile was updated successfully.', { userProfile: updatedProfile });
