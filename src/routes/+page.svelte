@@ -1,7 +1,5 @@
-<script>
-	export let data;
-</script>
+<h1>Welcome!</h1>
 
-<div class="container h-full mx-auto flex">
-	<h2 class="mt-8 ml-4">Welcome, {data.users[0].first_name}!</h2>
-</div>
+<form action="/auth/signout" method="POST">
+  <button class="variant-filled-warning btn">Sign Out</button>
+</form>
