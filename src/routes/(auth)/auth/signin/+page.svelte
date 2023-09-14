@@ -1,7 +1,5 @@
 <script lang="ts">
   import { enhance } from '$app/forms';
-  import { getToastStore } from '@skeletonlabs/skeleton';
-  import { afterUpdate } from 'svelte';
   import type { ActionData } from './$types';
 
   /**
@@ -13,19 +11,6 @@
    * @description Form data
    */
   export let form: ActionData;
-
-  // Initialize toast store - used to queue toast messages
-  const toastStore = getToastStore();
-
-  // Show toast message if there is an error
-  afterUpdate(() => {
-    if (form?.error !== undefined) {
-      toastStore.trigger({
-        message: form.error,
-        background: 'variant-filled-warning'
-      });
-    }
-  });
 </script>
 
 <svelte:head>
@@ -37,6 +22,14 @@
   <div class="authContainer mx-auto rounded-md bg-surface-500 py-8">
     <div class="mx-auto">
       <h1 class="my-16 text-center text-5xl font-bold">Sign in to Music Vault</h1>
+
+      {#if form && form.message !== undefined}
+        <aside role="alert" class="alert variant-filled-error mx-auto w-full max-w-sm">
+          <div class="alert-message">
+            <p>{form.message}</p>
+          </div>
+        </aside>
+      {/if}
 
       <hr class="mx-24 my-8 h-px !border-none bg-surface-400" />
 
@@ -85,8 +78,8 @@
       <p class="py-4 text-center">
         Don't have an account? <a
           class="underline"
-          data-sveltekit-preload-data="tap"
-          href="/auth/signup">Sign up for Music Vault</a
+          href="/auth/signup"
+          data-sveltekit-preload-data="tap">Sign up for Music Vault</a
         >.
       </p>
     </div>

@@ -1,3 +1,4 @@
+import { fault } from '$lib/utils';
 import { AuthApiError } from '@supabase/supabase-js';
 import { fail, redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
@@ -8,26 +9,17 @@ export const actions: Actions = {
     const email = formData.get('email') as string;
     const password = formData.get('password') as string;
 
-    const { error } = await supabase.auth.signInWithPassword({
+    const { error: signInError } = await supabase.auth.signInWithPassword({
       email,
       password
     });
 
-    if (error) {
-      if (error instanceof AuthApiError && error.status === 400) {
-        return fail(400, {
-          error: 'Email or password is invalid.',
-          values: {
-            email
-          }
-        });
+    if (signInError) {
+      if (signInError instanceof AuthApiError && signInError.status === 400) {
+        return fail(400, fault('Email or Password is incorrect.', { email }));
       }
-      return fail(500, {
-        error: 'Server error. Try again later.',
-        values: {
-          email
-        }
-      });
+
+      return fail(500, fault('Server error. Try again later.', { email }));
     }
 
     throw redirect(303, '/');
