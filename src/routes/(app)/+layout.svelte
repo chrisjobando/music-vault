@@ -3,18 +3,22 @@
   import { AppShell } from '@skeletonlabs/skeleton';
   // Components
   import { HeaderComponent, SideBarComponent } from '$lib/components';
+
+  /**
+   * @description Global data store for the app. Contains the supabase client and session.
+   */
+  export let data;
+
+  $: ({ userAccount } = data);
 </script>
 
 <AppShell regionPage="relative" slotPageHeader="sticky top-0 z-10">
   <svelte:fragment slot="header">
-    <HeaderComponent />
+    <HeaderComponent {userAccount} />
   </svelte:fragment>
 
   <svelte:fragment slot="sidebarLeft">
-    <SideBarComponent />
+    <SideBarComponent {userAccount} />
   </svelte:fragment>
-
-  <svelte:fragment slot="pageHeader"><h1>Page Header</h1></svelte:fragment>
-
   <slot />
 </AppShell>

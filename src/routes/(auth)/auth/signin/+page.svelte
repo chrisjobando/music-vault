@@ -41,7 +41,7 @@
             type="email"
             name="email"
             autocomplete="email"
-            value={form?.values?.email ?? ''}
+            value={form?.email ?? ''}
             placeholder="john@example.com"
             class="input w-full px-3 py-3 pr-16"
           />
