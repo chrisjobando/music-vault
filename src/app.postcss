@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+
+html,
+body {
+  @apply flex flex-grow bg-background;
+}
+
+h1,
+h2,
+h3,
+h4,
+button,
+span {
+  @apply font-bold;
+}
+
+h1 {
+  @apply py-4 text-4xl;
+}
+
+h2 {
+  @apply text-3xl;
+}
+
+h3 {
+  @apply text-2xl;
+}
+
+h4 {
+  @apply text-xl;
+}
+
+hr {
+  @apply my-4;
+}
+
+.border-neob {
+  @apply rounded-lg border-2 border-black;
+}
+
+.pageContainer {
+  @apply flex flex-grow flex-col gap-4 p-5;
+}
+
+.textContainer {
+  @apply block overflow-hidden text-ellipsis whitespace-nowrap;
+}
