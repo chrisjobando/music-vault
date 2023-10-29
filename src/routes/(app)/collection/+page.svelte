@@ -189,7 +189,6 @@
     }}
   >
     <TextInput
-      isSearch
       required
       name="add_record"
       label="Search for Record (Powered by OpenAI)"
