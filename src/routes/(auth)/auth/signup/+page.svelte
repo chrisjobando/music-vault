@@ -69,54 +69,59 @@
   <Loader bind:loading />
 {/if}
 
-<div>Image</div>
+<div class="hero min-h-screen bg-base-200">
+  <div class="hero-content flex-col lg:flex-row-reverse lg:gap-10">
+    <img alt="Music Match Landing" src="https://placehold.co/400" />
 
-<form
-  method="POST"
-  use:enhance={() => {
-    return async ({ update }) => {
-      await update({ reset: false });
-    };
-  }}
->
-  <div>
-    <h1>Sign up</h1>
-    <hr />
+    <div class="card w-full max-w-lg flex-shrink-0 bg-base-100 shadow-2xl">
+      <form
+        method="POST"
+        class="card-body"
+        use:enhance={() => {
+          return async ({ update }) => {
+            await update({ reset: false });
+          };
+        }}
+      >
+        <h1>Sign up</h1>
+
+        <div class="divider" />
+
+        {#if form && form.message.length > 0}
+          <Alert
+            time={5000}
+            message={form.message}
+            type={form.success ? 'success' : 'error'}
+            onDestroyCallback={() => {
+              if (form) {
+                form.message = '';
+              }
+            }}
+          />
+        {/if}
+
+        <EmailInput required bind:value={formEmail} bind:inputError={emailErrors} />
+
+        <PasswordInput required top="sm" bind:inputError={passwordErrors} />
+
+        <PasswordInput
+          required
+          top="sm"
+          name="confirm_password"
+          label="Confirm Password"
+          bind:inputError={confirmPasswordErrors}
+        />
+
+        <SubmitButton top="lg" text="Sign up" onClick={() => setLoadingState(true)} />
+
+        <div class="divider" />
+
+        <p>
+          Already have an account? <a href="/auth/signin" data-sveltekit-preload-data="tap"
+            >Sign in to your account</a
+          >
+        </p>
+      </form>
+    </div>
   </div>
-
-  {#if form && form.message.length > 0}
-    <Alert
-      time={5000}
-      message={form.message}
-      type={form.success ? 'success' : 'warning'}
-      onDestroyCallback={() => {
-        if (form) {
-          form.message = '';
-        }
-      }}
-    />
-  {/if}
-
-  <div>
-    <EmailInput required bind:value={formEmail} bind:inputError={emailErrors} />
-
-    <PasswordInput required bind:inputError={passwordErrors} />
-
-    <PasswordInput
-      required
-      name="confirm_password"
-      label="Confirm Password"
-      bind:inputError={confirmPasswordErrors}
-    />
-
-    <SubmitButton text="Sign up" onClick={() => setLoadingState(true)} />
-  </div>
-
-  <hr />
-
-  <p>
-    Already have an account? <a href="/auth/signin" data-sveltekit-preload-data="tap"
-      >Sign in to your account</a
-    >
-  </p>
-</form>
+</div>
