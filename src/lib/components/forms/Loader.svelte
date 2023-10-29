@@ -11,6 +11,6 @@
 
 <dialog bind:this={spinnerRef}>
   {#if spinnerRef && loading}
-    <div />
+    <span class="loading loading-spinner loading-lg" />
   {/if}
 </dialog>

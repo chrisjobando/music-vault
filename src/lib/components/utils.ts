@@ -1,10 +1,11 @@
-export type IAlertType = 'success' | 'info' | 'warning';
+export type IAlertType = 'info' | 'success' | 'warning' | 'error';
 export type IButtonType = IAlertType | 'primary' | 'secondary';
 
-export const themeColors: { [key in IButtonType]: string } = {
-  primary: 'bg-primary',
-  secondary: 'bg-secondary',
-  success: 'bg-success',
-  info: 'bg-info',
-  warning: 'bg-warning'
+export const buttonColors: { [key in IButtonType]: string } = {
+  primary: 'btn-primary',
+  secondary: 'btn-secondary',
+  warning: 'btn-warning',
+  success: 'btn-success',
+  info: 'btn-info',
+  error: 'btn-danger'
 };

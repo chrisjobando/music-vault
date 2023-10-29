@@ -1,9 +1,9 @@
 <script lang="ts">
   // Props
   /**
-   * @description Input value
+   * @description Error Message
    */
-  export let value = '';
+  export let inputError: string | undefined = undefined;
 
   /**
    * @description Whether the input is required
@@ -11,22 +11,27 @@
   export let required = false;
 
   /**
-   * @description Error Message
+   * @description Input value
    */
-  export let inputError: string | undefined = undefined;
+  export let value = '';
 </script>
 
-<label
-  ><p>
-    Email
-    {#if required}
-      <span>*</span>
-    {/if}
-  </p>
-  <input name="email" type="email" autocomplete="email" placeholder="john@example.com" bind:value />
+<div class="form-control w-full max-w-xs">
+  <label for="email" class="label">
+    <span class="label-text">Email</span>
+  </label>
+  <input
+    name="email"
+    type="email"
+    autocomplete="email"
+    placeholder="john@example.com"
+    class="input input-bordered w-full max-w-xs{inputError ? ' input-error' : ''}"
+    {required}
+    bind:value
+  />
   {#if inputError}
-    <p><span>{inputError}</span></p>
-  {:else}
-    <div />
+    <label class="label" for="email">
+      <span class="label-text-alt text-error">{inputError}</span>
+    </label>
   {/if}
-</label>
+</div>

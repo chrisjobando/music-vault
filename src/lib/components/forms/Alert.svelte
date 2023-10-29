@@ -21,6 +21,6 @@
   }, time);
 </script>
 
-<div>
-  <p><span>{message}</span></p>
+<div class="alert alert-warning">
+  <span>{message}</span>
 </div>

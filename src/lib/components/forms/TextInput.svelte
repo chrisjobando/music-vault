@@ -1,34 +1,9 @@
 <script lang="ts">
-  // Components
-  import SubmitButton from './SubmitButton.svelte';
-  // Icons
-  import SearchIcon from '~icons/mdi/search';
-
   // Props
   /**
-   * @description Input value
+   * @description Input autocomplete
    */
-  export let value = '';
-
-  /**
-   * @description Form name
-   */
-  export let name = 'name';
-
-  /**
-   * @description Input label
-   */
-  export let label = 'Label';
-
-  /**
-   * @description Whether the input is required
-   */
-  export let required = false;
-
-  /**
-   * @description Input placeholder
-   */
-  export let placeholder = 'Placeholder';
+  export let autocomplete: string | undefined = undefined;
 
   /**
    * @description Error Message
@@ -36,54 +11,47 @@
   export let inputError: string | undefined = undefined;
 
   /**
-   * @description Input autocomplete
+   * @description Input label
    */
-  export let autocomplete: string | undefined = undefined;
+  export let label = 'Label';
 
   /**
-   * @description Whether the search is disabled
-   * @description Can only be true is isSearch is true
+   * @description Form name
    */
-  export let disabled = false;
+  export let name = 'name';
 
   /**
-   * @description Whether the input is for search
+   * @description Input placeholder
    */
-  export let isSearch = false;
+  export let placeholder = 'Placeholder';
 
   /**
-   * @description setLoadingCallback function
+   * @description Whether the input is required
    */
-  export let setLoadingCallback: undefined | (() => void) = undefined;
+  export let required = false;
+
+  /**
+   * @description Input value
+   */
+  export let value = '';
 </script>
 
-<label
-  ><p>
-    {label}
-    {#if required}
-      <span>*</span>
-    {/if}
-  </p>
-  {#if isSearch}
-    <div>
-      <input type="text" {name} {placeholder} {autocomplete} bind:value />
-      <SubmitButton
-        onClick={() => {
-          if (setLoadingCallback) {
-            setLoadingCallback();
-          }
-        }}
-        bind:disabled
-      >
-        <SearchIcon />
-      </SubmitButton>
-    </div>
-  {:else}
-    <input type="text" {name} {placeholder} {autocomplete} bind:value />
-  {/if}
+<div class="form-control w-full max-w-xs">
+  <label for={name} class="label">
+    <span class="label-text">{label}</span>
+  </label>
+  <input
+    type="text"
+    class="input input-bordered w-full max-w-xs{inputError ? ' input-error' : ''}"
+    {name}
+    {required}
+    {placeholder}
+    {autocomplete}
+    bind:value
+  />
   {#if inputError}
-    <p><span>{inputError}</span></p>
-  {:else}
-    <div />
+    <label class="label" for={name}>
+      <span class="label-text-alt text-error">{inputError}</span>
+    </label>
   {/if}
-</label>
+</div>

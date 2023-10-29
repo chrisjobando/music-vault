@@ -4,14 +4,14 @@
 
   // Props
   /**
-   * @description Button text
-   */
-  export let text = '';
-
-  /**
    * @description Whether the button is disabled
    */
   export let disabled = false;
+
+  /**
+   * @description Button text
+   */
+  export let text = '';
 
   /**
    * @description Click handler
@@ -19,6 +19,6 @@
   export let onClick = () => {};
 </script>
 
-<BaseButton buttonType="submit" {text} {disabled} {onClick}>
+<BaseButton buttonType="submit" buttonColor="secondary" {text} {disabled} {onClick}>
   <slot />
 </BaseButton>
