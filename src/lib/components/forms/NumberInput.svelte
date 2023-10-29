@@ -1,4 +1,7 @@
 <script lang="ts">
+  // Utils
+  import { marginTop, type IMarginType } from '../utils';
+
   // Props
   /**
    * @description Error Message
@@ -21,25 +24,40 @@
   export let placeholder = 'Placeholder';
 
   /**
-   * @description Whether the input is required
+   * @description Required indicator
    */
-  export let required = false;
+  export let required: boolean = false;
+
+  /**
+   * @description Margin top
+   */
+  export let top: IMarginType | undefined = undefined;
 
   /**
    * @description Input value
    */
   export let value = '';
+
+  // Variables
+  /**
+   * @description Top margin styling
+   */
+  const topMargin = top ? ` ${marginTop[top]}` : '';
 </script>
 
-<div class="form-control w-full max-w-xs">
+<div class="form-control w-full max-w-md{topMargin}">
   <label for={name} class="label">
-    <span class="label-text">{label}</span>
+    <span class="label-text"
+      >{label}
+      {#if required}
+        <span class="text-error">*</span>
+      {/if}
+    </span>
   </label>
   <input
     type="number"
-    class="input input-bordered w-full max-w-xs{inputError ? ' input-error' : ''}"
+    class="input input-bordered{inputError ? ' input-error' : ''}"
     {name}
-    {required}
     {placeholder}
     bind:value
   />

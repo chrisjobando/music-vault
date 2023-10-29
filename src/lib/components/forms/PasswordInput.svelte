@@ -1,4 +1,6 @@
 <script lang="ts">
+  // Utils
+  import { marginTop, type IMarginType } from '../utils';
   // Visibility Icons
   import VisibleIcon from '~icons/mdi/visibility';
   import InvisibleIcon from '~icons/mdi/visibility-off';
@@ -20,9 +22,14 @@
   export let name = 'password';
 
   /**
-   * @description Whether the input is required
+   * @description Required indicator
    */
-  export let required = false;
+  export let required: boolean = false;
+
+  /**
+   * @description Margin top
+   */
+  export let top: IMarginType | undefined = undefined;
 
   /**
    * @description Input value
@@ -33,7 +40,12 @@
   /**
    * @description Toggles password visibility
    */
-  let showPassword = true;
+  let showPassword = false;
+
+  /**
+   * @description Top margin styling
+   */
+  const topMargin = top ? ` ${marginTop[top]}` : '';
 
   // Functions
   /**
@@ -44,9 +56,14 @@
   }
 </script>
 
-<div class="form-control w-full max-w-xs">
+<div class="form-control w-full max-w-md{topMargin}">
   <label for={name} class="label">
-    <span class="label-text">{label}</span>
+    <span class="label-text"
+      >{label}
+      {#if required}
+        <span class="text-error">*</span>
+      {/if}
+    </span>
   </label>
   {#if showPassword}
     <div class="relative flex">
@@ -54,9 +71,8 @@
         type="text"
         autocomplete="current-password"
         placeholder="At least 6 characters"
-        class="input input-bordered w-full max-w-xs pr-12{inputError ? ' input-error' : ''}"
+        class="input input-bordered w-full pr-12{inputError ? ' input-error' : ''}"
         {name}
-        {required}
         bind:value
       />
       <button class="absolute right-3 top-3 h-6 w-6" on:click={togglePasswordVisibility}>
@@ -69,9 +85,8 @@
         type="password"
         autocomplete="current-password"
         placeholder="At least 6 characters"
-        class="input input-bordered w-full max-w-xs pr-12{inputError ? ' input-error' : ''}"
+        class="input input-bordered w-full pr-12{inputError ? ' input-error' : ''}"
         {name}
-        {required}
         bind:value
       />
       <button class="absolute right-3 top-3 h-6 w-6" on:click={togglePasswordVisibility}>
