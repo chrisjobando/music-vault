@@ -8,6 +8,6 @@
   <meta name="description" content="Music Vault - Home Page" />
 </svelte:head>
 
-<div class="pageContainer">
+<div>
   <PageHeader title="Home" />
 </div>

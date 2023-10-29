@@ -14,8 +14,8 @@
 </script>
 
 {#if $page.route.id && userProfile}
-  <div class="flex flex-grow">
+  <div>
     <Sidebar {userProfile} />
-    <div class="flex w-full flex-grow md:px-12"><slot /></div>
+    <div><slot /></div>
   </div>
 {/if}

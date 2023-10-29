@@ -57,27 +57,17 @@
   export let setLoadingCallback: undefined | (() => void) = undefined;
 </script>
 
-<label class="block w-full"
-  ><p class="font-bold">
+<label
+  ><p>
     {label}
     {#if required}
-      <span class="text-red">*</span>
+      <span>*</span>
     {/if}
   </p>
   {#if isSearch}
-    <div class="flex">
-      <input
-        type="text"
-        class="border-neob mt-2 flex flex-grow shadow-light focus:-translate-y-1 focus:shadow-harsh"
-        {name}
-        {placeholder}
-        {autocomplete}
-        bind:value
-      />
+    <div>
+      <input type="text" {name} {placeholder} {autocomplete} bind:value />
       <SubmitButton
-        icon
-        classes="ml-4 mb-0 !w-11"
-        buttonColor="secondary"
         onClick={() => {
           if (setLoadingCallback) {
             setLoadingCallback();
@@ -89,18 +79,11 @@
       </SubmitButton>
     </div>
   {:else}
-    <input
-      type="text"
-      class="border-neob mt-2 w-full shadow-light focus:-translate-y-1 focus:shadow-harsh"
-      {name}
-      {placeholder}
-      {autocomplete}
-      bind:value
-    />
+    <input type="text" {name} {placeholder} {autocomplete} bind:value />
   {/if}
   {#if inputError}
-    <p class="mt-1 pl-2 text-sm text-red"><span>{inputError}</span></p>
+    <p><span>{inputError}</span></p>
   {:else}
-    <div class="mt-1 h-5 w-full" />
+    <div />
   {/if}
 </label>

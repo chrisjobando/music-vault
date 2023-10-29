@@ -61,11 +61,11 @@
   <Loader bind:loading />
 {/if}
 
-<div class="text-center md:order-2">Image</div>
+<div>Image</div>
 
-<form method="POST" use:enhance class="pageContainer">
+<form method="POST" use:enhance>
   <div>
-    <h1 class="py-8">Create your profile</h1>
+    <h1>Create your profile</h1>
     <hr />
   </div>
 

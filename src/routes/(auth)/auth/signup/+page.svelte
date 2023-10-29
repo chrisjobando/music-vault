@@ -69,11 +69,10 @@
   <Loader bind:loading />
 {/if}
 
-<div class="text-center md:order-2">Image</div>
+<div>Image</div>
 
 <form
   method="POST"
-  class="pageContainer"
   use:enhance={() => {
     return async ({ update }) => {
       await update({ reset: false });
@@ -81,7 +80,7 @@
   }}
 >
   <div>
-    <h1 class="py-8">Sign up</h1>
+    <h1>Sign up</h1>
     <hr />
   </div>
 
@@ -116,10 +115,8 @@
   <hr />
 
   <p>
-    Already have an account? <a
-      class="font-bold"
-      href="/auth/signin"
-      data-sveltekit-preload-data="tap">Sign in to your account</a
+    Already have an account? <a href="/auth/signin" data-sveltekit-preload-data="tap"
+      >Sign in to your account</a
     >
   </p>
 </form>

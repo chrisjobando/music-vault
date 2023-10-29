@@ -8,11 +8,6 @@
 
   // Props
   /**
-   * @description Grid template columns
-   */
-  export let gridTemplateColumns: string;
-
-  /**
    * @description Record data
    */
   export let recordData: IRecords;
@@ -35,7 +30,7 @@
   /**
    * @description Set Loading Callback
    */
-  export let setLoadingCallback: () => void;
+  export let setLoadingCallback: undefined | ((loading: boolean) => void) = undefined;
 
   // Variables
 
@@ -60,18 +55,15 @@
   }
 </script>
 
-<div class="grid {gridTemplateColumns} border-b-2 border-[#e5e5e5] p-3 last-of-type:border-b-0">
-  <p class="pr-3 text-right">{recordIdx + 1}</p>
+<div>
+  <p>{recordIdx + 1}</p>
 
-  <button
-    class="textContainer pr-3 text-left hover:underline"
-    on:click={() => openEditRecordModal(true)}>{recordData.title}</button
-  >
-  <p class="textContainer pr-3 text-right md:text-left">{recordData.artist}</p>
-  <p class="textContainer !hidden pr-3 md:!block">
+  <button on:click={() => openEditRecordModal(true)}>{recordData.title}</button>
+  <p>{recordData.artist}</p>
+  <p>
     {recordData.genre === null ? '' : recordData.genre}
   </p>
-  <p class="textContainer !hidden pr-3 text-right md:!block">
+  <p>
     {recordData.year === null ? '' : recordData.year}
   </p>
 </div>

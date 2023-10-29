@@ -61,66 +61,66 @@
   }
 </script>
 
-<div class="border-neob bg-white shadow-light">
+<div>
   <!-- List Header -->
-  <div class="grid border-b-2 p-3 shadow-light {gridTemplateColumns}">
+  <div>
     <div />
 
     <button
-      class="flex{!isSortingField('title') ? ' font-normal' : ''}"
+      class={!isSortingField('title') ? ' font-normal' : ''}
       on:click={() => changeSortField('title')}
       >Title
       {#if isSortingField('title')}
         {#if sortAsc}
-          <UpArrow class="ml-1" />
+          <UpArrow />
         {:else}
-          <DownArrow class="ml-1" />
+          <DownArrow />
         {/if}
       {/if}
     </button>
 
     <button
-      class="flex justify-end md:justify-start{!isSortingField('artist') ? ' font-normal' : ''}"
+      class={!isSortingField('artist') ? ' font-normal' : ''}
       on:click={() => changeSortField('artist')}
       >Artist
       {#if isSortingField('artist')}
         {#if sortAsc}
-          <UpArrow class="ml-1" />
+          <UpArrow />
         {:else}
-          <DownArrow class="ml-1" />
+          <DownArrow />
         {/if}
       {/if}
     </button>
 
     <button
-      class="hidden md:flex{!isSortingField('genre') ? ' font-normal' : ''}"
+      class={!isSortingField('genre') ? ' font-normal' : ''}
       on:click={() => changeSortField('genre')}
       >Genre
       {#if isSortingField('genre')}
         {#if sortAsc}
-          <UpArrow class="ml-1" />
+          <UpArrow />
         {:else}
-          <DownArrow class="ml-1" />
+          <DownArrow />
         {/if}
       {/if}
     </button>
 
     <button
-      class="hidden pr-3 md:flex md:justify-end{!isSortingField('year') ? ' font-normal' : ''}"
+      class={!isSortingField('year') ? ' font-normal' : ''}
       on:click={() => changeSortField('year')}
       >Year
       {#if isSortingField('year')}
         {#if sortAsc}
-          <UpArrow class="ml-1" />
+          <UpArrow />
         {:else}
-          <DownArrow class="ml-1" />
+          <DownArrow />
         {/if}
       {/if}
     </button>
   </div>
 
   <!-- List Items -->
-  <div class="max-h-96 overflow-y-scroll">
+  <div>
     {#each sortedRecordData as recordData, recordIdx}
       <RecordTile
         {recordIdx}

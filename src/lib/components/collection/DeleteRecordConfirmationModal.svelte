@@ -16,7 +16,7 @@
   /**
    * @description Loading callback
    */
-  export let setLoadingCallback: () => void;
+  export let setLoadingCallback: undefined | ((loading: boolean) => void) = undefined;
 
   // Variables
   /**
@@ -55,19 +55,14 @@
     onCancelCallback={() => openDeleteRecordConfirmationModal(false)}
     bind:showModal={showDeleteConfirmationModal}
   >
-    <h3 slot="header" class="my-4">Delete Record?</h3>
+    <h3 slot="header">Delete Record?</h3>
 
-    <div slot="content" class="grid grid-cols-1 gap-4">
+    <div slot="content">
       <h4>{recordData.title}</h4>
     </div>
 
-    <div slot="footer" class="ml-auto">
-      <SubmitButton
-        text="Delete"
-        classes="!w-32"
-        buttonColor="warning"
-        onClick={setLoadingCallback}
-      />
+    <div slot="footer">
+      <SubmitButton text="Delete" buttonColor="warning" onClick={setLoadingCallback} />
     </div>
   </BaseModal>
 </form>

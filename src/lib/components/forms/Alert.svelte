@@ -1,21 +1,9 @@
 <script lang="ts">
-  // Interfaces
-  import type { IAlertType } from '../utils';
-  // Utils
-  import { themeColors } from '../utils';
-
   // Props
   /**
    * @description Alert message
    */
   export let message = '';
-
-  /**
-   * @description Alert color type
-   */
-  export let type: IAlertType = 'success';
-
-  const bgColor = themeColors[type];
 
   /**
    * @description Alert lifetime in milliseconds
@@ -33,6 +21,6 @@
   }, time);
 </script>
 
-<div class="border-neob flex items-center justify-center p-3 shadow-light {bgColor}">
+<div>
   <p><span>{message}</span></p>
 </div>

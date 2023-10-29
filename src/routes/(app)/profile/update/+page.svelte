@@ -2,11 +2,11 @@
   // Forms
   import { enhance } from '$app/forms';
   import BaseButton from '$lib/components/BaseButton.svelte';
-  // Components
+// Components
   import { Alert, Loader, SubmitButton, TextInput } from '$lib/components/forms';
   // Interfaces
   import type { IProfileErrors } from '$lib/schema/validationSchema.js';
-  import type { IUserProfile } from '$lib/types';
+  import type { IUserProfile } from '$lib/types.js';
 
   /**
    * @description Page data
@@ -89,7 +89,6 @@
 
 <form
   method="POST"
-  class="pageContainer"
   use:enhance={({ formData }) => {
     formData.set('original_profile', JSON.stringify(userProfile));
     return async ({ update }) => {
@@ -99,8 +98,8 @@
   }}
 >
   <div>
-    <div class="flex">
-      <a href="/profile"><BaseButton text="Back" buttonColor="info" classes="mr-4" /> </a>
+    <div>
+      <a href="/profile"><BaseButton text="Back" /> </a>
 
       <h1>Update Profile</h1>
     </div>
@@ -112,7 +111,6 @@
     <Alert
       time={5000}
       message={form.message}
-      type={form.success ? 'success' : 'warning'}
       onDestroyCallback={() => {
         if (form) {
           form.message = '';

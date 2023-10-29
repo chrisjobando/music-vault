@@ -7,7 +7,7 @@
   import { Alert, Loader, NumberInput, SubmitButton, TextInput } from '$lib/components/forms';
   // Interfaces
   import type { IRecordErrors } from '$lib/schema/validationSchema';
-  import type { IRecords, IUpdateRecords, IUserRecord } from '$lib/types';
+  import type { IRecords, IUpdateRecords, IUserRecord } from '$lib/types.js';
   // Icons
   import AddIcon from '~icons/mdi/add';
 
@@ -160,14 +160,13 @@
   <Loader bind:loading />
 {/if}
 
-<div class="pageContainer">
+<div>
   <PageHeader title="Collection" />
 
   {#if form && form.message.length > 0}
     <Alert
       time={5000}
       message={form.message}
-      type={form.success ? 'success' : 'warning'}
       onDestroyCallback={() => {
         if (form) {
           form.message = '';
@@ -201,16 +200,10 @@
     />
   </form>
 
-  <div class="flex items-center justify-between">
-    <h3 class="my-4">Current Collection:</h3>
-    <BaseButton
-      icon
-      text="Add Record"
-      buttonColor="info"
-      classes="h-11 w-36 my-0"
-      onClick={() => openAddRecordModal(true)}
-    >
-      <AddIcon class="mr-2" />
+  <div>
+    <h3>Current Collection:</h3>
+    <BaseButton text="Add Record" onClick={() => openAddRecordModal(true)}>
+      <AddIcon />
     </BaseButton>
   </div>
 
@@ -246,9 +239,9 @@
       onCancelCallback={() => openAddRecordModal(false)}
       bind:showModal={showAddRecordModal}
     >
-      <h3 slot="header" class="my-4">Add record</h3>
+      <h3 slot="header">Add record</h3>
 
-      <div slot="content" class="grid grid-cols-1">
+      <div slot="content">
         <TextInput
           required
           name="title"
@@ -284,8 +277,8 @@
         />
       </div>
 
-      <div slot="footer" class="ml-auto">
-        <SubmitButton text="Add" classes="!w-32" onClick={() => setLoadingState(true)} />
+      <div slot="footer">
+        <SubmitButton text="Add" onClick={() => setLoadingState(true)} />
       </div>
     </BaseModal>
   </form>

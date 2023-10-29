@@ -26,11 +26,8 @@
   $: if (dialogRef && showModal) dialogRef.showModal();
 </script>
 
-<dialog
-  class="min-w-sm max-w-lg rounded-lg bg-white backdrop:bg-dialogBackdrop"
-  bind:this={dialogRef}
->
-  <div class="border-neob p-5">
+<dialog bind:this={dialogRef}>
+  <div>
     <slot name="header" />
 
     <hr />
@@ -39,11 +36,9 @@
 
     <hr />
 
-    <div class="flex">
+    <div>
       <BaseButton
-        classes="w-32"
         text={closeText}
-        buttonColor="info"
         onClick={() => {
           if (dialogRef) {
             dialogRef.close();
@@ -56,31 +51,3 @@
     </div>
   </div>
 </dialog>
-
-<style lang="postcss">
-  dialog[open] {
-    animation: zoom 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  }
-
-  dialog[open]::backdrop {
-    animation: fade 0.2s ease-out;
-  }
-
-  @keyframes zoom {
-    from {
-      transform: scale(0.95);
-    }
-    to {
-      transform: scale(1);
-    }
-  }
-
-  @keyframes fade {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-</style>

@@ -55,7 +55,7 @@
   /**
    * @description Loading callback
    */
-  export let setLoadingCallback: () => void;
+  export let setLoadingCallback: undefined | ((loading: boolean) => void) = undefined;
 
   /**
    * @description Modal close callback
@@ -87,20 +87,14 @@
     onCancelCallback={() => openEditRecordModal(false)}
     bind:showModal={showEditRecordModal}
   >
-    <div slot="header" class="my-4 flex items-center justify-between">
+    <div slot="header">
       <h3>Edit Record</h3>
-      <BaseButton
-        icon
-        text=""
-        classes="w-8 h-8 !my-0"
-        buttonColor="warning"
-        onClick={() => openDeleteRecordConfirmationModal(true)}
-      >
+      <BaseButton text="" onClick={() => openDeleteRecordConfirmationModal(true)}>
         <DeleteIcon />
       </BaseButton>
     </div>
 
-    <div slot="content" class="grid grid-cols-1">
+    <div slot="content">
       <TextInput
         required
         name="title"
@@ -133,13 +127,8 @@
       />
     </div>
 
-    <div slot="footer" class="ml-auto">
-      <SubmitButton
-        text="Update"
-        classes="!w-32"
-        onClick={setLoadingCallback}
-        bind:disabled={disableUpdate}
-      />
+    <div slot="footer">
+      <SubmitButton text="Update" onClick={setLoadingCallback} bind:disabled={disableUpdate} />
     </div>
   </BaseModal>
 </form>
