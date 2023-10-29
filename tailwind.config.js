@@ -1,31 +1,25 @@
 import forms from '@tailwindcss/forms';
 import typography from '@tailwindcss/typography';
+import daisyui from 'daisyui';
 
 export default {
   content: ['./src/**/*.{html,js,svelte,ts}'],
-  theme: {
-    colors: {
-      primary: '#8A81F7',
-      secondary: '#98DCFF',
-      background: '#F3F6FF',
-      success: '#7EEAD6',
-      info: '#FFC56D',
-      warning: '#EE63A1',
-      white: '#FFFFFF',
-      black: '#191919',
-      red: '#FF5051',
-      dialogBackdrop: 'rgba(0, 0, 0, 0.3)',
-      transparent: 'transparent'
-    },
-    extend: {
-      boxShadow: {
-        light: '2px 3px 0px 0px rgb(0, 0, 0)',
-        harsh: '4px 4px 0px 0px rgb(0, 0, 0)'
-      },
-      minWidth: {
-        sm: '24rem'
+  daisyui: {
+    themes: [
+      {
+        harmony: {
+          primary: '#8a81f7',
+          secondary: '#98dcff',
+          accent: '#ffb86b',
+          neutral: '#414558',
+          'base-100': '#272935',
+          info: '#4065c9',
+          success: '#5ad89d',
+          warning: '#f4da66',
+          error: '#ec6f6f'
+        }
       }
-    }
+    ]
   },
-  plugins: [forms, typography]
+  plugins: [forms, typography, daisyui]
 };
