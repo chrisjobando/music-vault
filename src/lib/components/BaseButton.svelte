@@ -1,6 +1,6 @@
 <script lang="ts">
   // Utils
-  import { buttonColors, type IButtonType } from './utils';
+  import { buttonColors, marginTop, type IButtonType, type IMarginType } from './utils';
 
   // Props
   /**
@@ -24,14 +24,32 @@
   export let text = '';
 
   /**
+   * @description Margin top
+   */
+  export let top: IMarginType | undefined = undefined;
+
+  /**
    * @description Click handler
    */
   export let onClick = () => {};
 
   // Variables
+  /**
+   * @description Button color styling
+   */
   const themeColor = buttonColors[buttonColor];
+
+  /**
+   * @description Top margin styling
+   */
+  const topMargin = top ? ` ${marginTop[top]}` : '';
 </script>
 
-<button type={buttonType} class="btn {themeColor}" {disabled} on:click={onClick}>
+<button
+  type={buttonType}
+  class="btn max-w-md rounded-full {themeColor}{topMargin}"
+  {disabled}
+  on:click={onClick}
+>
   <p>{text}</p>
 </button>
