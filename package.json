@@ -41,6 +41,8 @@
   "dependencies": {
     "@supabase/auth-helpers-sveltekit": "^0.10.2",
     "@supabase/supabase-js": "^2.33.1",
+    "@svelteuidev/composables": "^0.15.3",
+    "@svelteuidev/core": "^0.15.3",
     "openai": "^4.11.0",
     "zod": "^3.22.2"
   }
