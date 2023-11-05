@@ -2,8 +2,8 @@
   // Forms
   import { enhance } from '$app/forms';
   import BaseButton from '$lib/components/BaseButton.svelte';
-// Components
-  import { Alert, Loader, SubmitButton, TextInput } from '$lib/components/forms';
+  // Components
+  import { Alert, FileInput, Loader, SubmitButton, TextInput } from '$lib/components/forms';
   // Interfaces
   import type { IProfileErrors } from '$lib/schema/validationSchema.js';
   import type { IUserProfile } from '$lib/types.js';
@@ -148,10 +148,9 @@
       bind:inputError={lastNameErrors}
     />
 
-    <TextInput
-      name="avatar_url"
-      label="Avatar URL"
-      placeholder="https://picsum.photos/100"
+    <FileInput
+      name="avatar"
+      label="Profile Image"
       bind:value={formValues.avatar_url}
       bind:inputError={avatarUrlErrors}
     />

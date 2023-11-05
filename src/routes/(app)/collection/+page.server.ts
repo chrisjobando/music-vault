@@ -35,7 +35,7 @@ export const load: PageServerLoad = async ({ locals: { supabase, getSession } })
     .match({ user_id });
 
   if (error) {
-    console.error(error);
+    return fail(500, fault('Server error. Try again later'));
   }
 
   return {

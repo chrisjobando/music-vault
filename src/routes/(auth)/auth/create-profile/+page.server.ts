@@ -2,12 +2,14 @@
 import type { IInputProfiles } from '$lib/types';
 import type { Actions, PageServerLoad } from './$types';
 
+// Validation
+import { ProfileSchema } from '$lib/schema/validationSchema';
+import { ZodError } from 'zod';
+
 // Utils
 import { fault, formatError } from '$lib/api/utils';
-import { ProfileSchema } from '$lib/schema/validationSchema';
 import { fail, redirect } from '@sveltejs/kit';
 import { v4 as uuidv4 } from 'uuid';
-import { ZodError } from 'zod';
 
 export const load: PageServerLoad = async ({ locals: { supabase, getSession } }) => {
   const session = await getSession();

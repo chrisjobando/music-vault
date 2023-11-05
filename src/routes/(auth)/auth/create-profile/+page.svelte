@@ -2,8 +2,7 @@
   // Forms
   import { enhance } from '$app/forms';
   // Components
-  import { Loader, SubmitButton, TextInput } from '$lib/components/forms';
-  import FileInput from '$lib/components/forms/FileInput.svelte';
+  import { FileInput, Loader, SubmitButton, TextInput } from '$lib/components/forms';
   // Interfaces
   import type { IProfileErrors } from '$lib/schema/validationSchema.js';
 
