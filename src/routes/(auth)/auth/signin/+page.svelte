@@ -80,7 +80,7 @@
           };
         }}
       >
-        <h1>Sign in</h1>
+        <h1 class="mt-4">Sign in</h1>
 
         <div class="divider" />
 
@@ -101,7 +101,7 @@
 
         <PasswordInput required top="sm" bind:inputError={passwordErrors} />
 
-        <SubmitButton required top="lg" text="Sign in" onClick={() => setLoadingState(true)} />
+        <SubmitButton top="lg" text="Sign in" onClick={() => setLoadingState(true)} />
 
         <div class="divider" />
 

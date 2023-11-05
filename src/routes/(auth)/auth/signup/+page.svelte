@@ -83,7 +83,7 @@
           };
         }}
       >
-        <h1>Sign up</h1>
+        <h1 class="mt-4">Sign up</h1>
 
         <div class="divider" />
 
