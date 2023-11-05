@@ -3,6 +3,7 @@
   import { enhance } from '$app/forms';
   // Components
   import { Loader, SubmitButton, TextInput } from '$lib/components/forms';
+  import FileInput from '$lib/components/forms/FileInput.svelte';
   // Interfaces
   import type { IProfileErrors } from '$lib/schema/validationSchema.js';
 
@@ -61,47 +62,47 @@
   <Loader bind:loading />
 {/if}
 
-<div>Image</div>
+<div class="hero min-h-screen bg-base-200">
+  <div class="hero-content flex-col lg:flex-row-reverse lg:gap-10">
+    <img alt="Music Match Landing" src="https://placehold.co/400" />
 
-<form method="POST" use:enhance>
-  <div>
-    <h1>Create your profile</h1>
-    <hr />
+    <div class="card w-full max-w-lg flex-shrink-0 bg-base-100 shadow-2xl">
+      <form method="POST" class="card-body" use:enhance>
+        <h1 class="mt-4">Create your profile</h1>
+
+        <div class="divider" />
+
+        <div>
+          <TextInput
+            required
+            label="Username"
+            name="display_name"
+            placeholder="JohnDoe123"
+            bind:inputError={displayNameErrors}
+          />
+
+          <TextInput
+            required
+            name="first_name"
+            label="First Name"
+            placeholder="John"
+            autocomplete="given-name"
+            bind:inputError={firstNameErrors}
+          />
+
+          <TextInput
+            name="last_name"
+            label="Last Name"
+            placeholder="Doe"
+            autocomplete="family-name"
+            bind:inputError={lastNameErrors}
+          />
+
+          <FileInput name="avatar" label="Profile Image" bind:inputError={avatarUrlErrors} />
+
+          <SubmitButton top="lg" text="Create profile" onClick={() => setLoadingState(true)} />
+        </div>
+      </form>
+    </div>
   </div>
-
-  <div>
-    <TextInput
-      required
-      label="Username"
-      name="display_name"
-      placeholder="JohnDoe123"
-      bind:inputError={displayNameErrors}
-    />
-
-    <TextInput
-      required
-      name="first_name"
-      label="First Name"
-      placeholder="John"
-      autocomplete="given-name"
-      bind:inputError={firstNameErrors}
-    />
-
-    <TextInput
-      name="last_name"
-      label="Last Name"
-      placeholder="Doe"
-      autocomplete="family-name"
-      bind:inputError={lastNameErrors}
-    />
-
-    <TextInput
-      name="avatar_url"
-      label="Avatar URL"
-      placeholder="https://picsum.photos/100"
-      bind:inputError={avatarUrlErrors}
-    />
-
-    <SubmitButton text="Create profile" onClick={() => setLoadingState(true)} />
-  </div>
-</form>
+</div>
