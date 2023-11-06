@@ -25,7 +25,7 @@
 
   {#if userProfile}
     <div>
-      <Avatar size="large" {userProfile} />
+      <Avatar size="lg" {userProfile} />
       <p><span>Username:</span> {userProfile.display_name}</p>
       <p><span>Name:</span> {getUserFullName(userProfile)}</p>
     </div>
