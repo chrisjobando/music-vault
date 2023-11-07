@@ -13,7 +13,8 @@ export type IInputRecords = Database['public']['Tables']['records']['Insert'];
 export type IUpdateRecords = Database['public']['Tables']['records']['Update'];
 export type IRecords = Database['public']['Tables']['records']['Row'];
 
-export type IUserRecord = Pick<IRecords, 'title' | 'artist' | 'year'> & {
+export type IUserRecord = Pick<IRecords, 'title' | 'artist'> & {
+  year: string;
   genre: string;
 };
 export type IEditRecord = Pick<IRecords, 'id' | 'title' | 'artist' | 'year' | 'genre'>;
