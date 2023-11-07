@@ -3,10 +3,11 @@
   import { enhance } from '$app/forms';
   import BaseButton from '$lib/components/BaseButton.svelte';
   // Components
+  import { PageHeader } from '$lib/components';
   import { Alert, FileInput, Loader, SubmitButton, TextInput } from '$lib/components/forms';
   // Interfaces
-  import type { IProfileErrors } from '$lib/schema/validationSchema.js';
-  import type { IUserProfile } from '$lib/types.js';
+  import type { IProfileErrors } from '$lib/schema/validationSchema';
+  import type { IUserProfile } from '$lib/types';
 
   /**
    * @description Page data
@@ -97,15 +98,13 @@
     };
   }}
 >
-  <div>
-    <div>
-      <a href="/profile"><BaseButton text="Back" /> </a>
-
-      <h1>Update Profile</h1>
-    </div>
-
-    <hr />
+  <div class="mb-4">
+    <a href="/profile">
+      <BaseButton text="Back" />
+    </a>
   </div>
+
+  <PageHeader title="Update Profile" />
 
   {#if form && form.message.length > 0}
     <Alert
@@ -119,46 +118,49 @@
     />
   {/if}
 
-  <div>
-    <TextInput
-      required
-      label="Username"
-      name="display_name"
-      placeholder="JohnDoe123"
-      bind:value={formValues.display_name}
-      bind:inputError={displayNameErrors}
-    />
+  <TextInput
+    required
+    top="lg"
+    label="Username"
+    name="display_name"
+    placeholder="JohnDoe123"
+    bind:value={formValues.display_name}
+    bind:inputError={displayNameErrors}
+  />
 
-    <TextInput
-      required
-      name="first_name"
-      label="First Name"
-      placeholder="John"
-      autocomplete="given-name"
-      bind:value={formValues.first_name}
-      bind:inputError={firstNameErrors}
-    />
+  <TextInput
+    required
+    top="sm"
+    name="first_name"
+    label="First Name"
+    placeholder="John"
+    autocomplete="given-name"
+    bind:value={formValues.first_name}
+    bind:inputError={firstNameErrors}
+  />
 
-    <TextInput
-      name="last_name"
-      label="Last Name"
-      placeholder="Doe"
-      autocomplete="family-name"
-      bind:value={formValues.last_name}
-      bind:inputError={lastNameErrors}
-    />
+  <TextInput
+    top="sm"
+    name="last_name"
+    label="Last Name"
+    placeholder="Doe"
+    autocomplete="family-name"
+    bind:value={formValues.last_name}
+    bind:inputError={lastNameErrors}
+  />
 
-    <FileInput
-      name="avatar"
-      label="Profile Image"
-      bind:value={formValues.avatar_url}
-      bind:inputError={avatarUrlErrors}
-    />
+  <FileInput
+    top="sm"
+    name="avatar"
+    label="Profile Image"
+    bind:value={formValues.avatar_url}
+    bind:inputError={avatarUrlErrors}
+  />
 
-    <SubmitButton
-      text="Update"
-      onClick={() => setLoadingState(true)}
-      bind:disabled={disableUpdate}
-    />
-  </div>
+  <SubmitButton
+    top="lg"
+    text="Update"
+    onClick={() => setLoadingState(true)}
+    bind:disabled={disableUpdate}
+  />
 </form>
