@@ -24,16 +24,16 @@
   <PageHeader title="Profile" />
 
   {#if userProfile}
-    <div>
+    <div class="my-4 flex flex-col items-center">
       <Avatar size="lg" {userProfile} />
-      <p><span>Username:</span> {userProfile.display_name}</p>
+      <p class="mt-4"><span>Username:</span> {userProfile.display_name}</p>
       <p><span>Name:</span> {getUserFullName(userProfile)}</p>
     </div>
 
     <hr />
   {/if}
 
-  <div>
+  <div class="mt-4 flex justify-between">
     <a href="/profile/update">
       <BaseButton text="Update profile" buttonColor="info" />
     </a>
