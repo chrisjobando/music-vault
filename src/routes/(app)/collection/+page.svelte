@@ -30,12 +30,10 @@
    */
   let showAddRecordModal = false;
 
-  $: disableSearch = !userPrompt;
-
   const BLANK_RECORD: IUserRecord = {
     title: '',
     artist: '',
-    year: null,
+    year: '',
     genre: ''
   };
 
@@ -179,6 +177,7 @@
   <form
     method="POST"
     action="?/generateRecord"
+    class="flex items-end"
     use:enhance={() => {
       return async ({ result, update }) => {
         update();
@@ -193,13 +192,15 @@
       name="add_record"
       label="Search for Record (Powered by OpenAI)"
       placeholder="Al Green - Greatest Hits"
-      setLoadingCallback={() => setLoadingState(true)}
       bind:value={userPrompt}
-      bind:disabled={disableSearch}
     />
+
+    <div class="ml-4">
+      <SubmitButton text="Generate" onClick={() => setLoadingState(true)} />
+    </div>
   </form>
 
-  <div>
+  <div class="mt-4 flex items-center justify-between">
     <h3>Current Collection:</h3>
     <BaseButton text="Add Record" onClick={() => openAddRecordModal(true)}>
       <AddIcon />
