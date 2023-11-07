@@ -1,6 +1,9 @@
 <script lang="ts">
-  // Utils
-  import { buttonColors, marginTop, type IButtonType, type IMarginType } from './utils';
+  // Styling
+  import cx from 'classnames';
+
+  // Interfaces
+  import type { IButtonType, IMarginType } from './utils';
 
   // Props
   /**
@@ -32,22 +35,23 @@
    * @description Click handler
    */
   export let onClick = () => {};
-
-  // Variables
-  /**
-   * @description Button color styling
-   */
-  const themeColor = buttonColors[buttonColor];
-
-  /**
-   * @description Top margin styling
-   */
-  const topMargin = top ? ` ${marginTop[top]}` : '';
 </script>
 
 <button
   type={buttonType}
-  class="btn max-w-md rounded-full {themeColor}{topMargin}"
+  class={cx('btn max-w-md', {
+    'btn-primary': buttonColor === 'primary',
+    'btn-secondary': buttonColor === 'secondary',
+    'btn-info': buttonColor === 'info',
+    'btn-success': buttonColor === 'success',
+    'btn-warning': buttonColor === 'warning',
+    'btn-error': buttonColor === 'error',
+    'rounded-full': buttonType === 'submit',
+    'mt-2': top === 'sm',
+    'mt-4': top === 'md',
+    'mt-8': top === 'lg',
+    'mt-10': top === 'xl'
+  })}
   {disabled}
   on:click={onClick}
 >
