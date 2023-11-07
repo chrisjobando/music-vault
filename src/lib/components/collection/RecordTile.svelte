@@ -55,18 +55,15 @@
   }
 </script>
 
-<div>
-  <p>{recordIdx + 1}</p>
-
-  <button on:click={() => openEditRecordModal(true)}>{recordData.title}</button>
-  <p>{recordData.artist}</p>
-  <p>
-    {recordData.genre === null ? '' : recordData.genre}
-  </p>
-  <p>
-    {recordData.year === null ? '' : recordData.year}
-  </p>
-</div>
+<tr>
+  <th>{recordIdx + 1}</th>
+  <td>
+    <button on:click={() => openEditRecordModal(true)}>{recordData.title}</button>
+  </td>
+  <td>{recordData.artist}</td>
+  <td>{recordData.genre === null ? '' : recordData.genre}</td>
+  <td>{recordData.year === null ? '' : recordData.year}</td>
+</tr>
 
 <!-- View Record Modal -->
 

@@ -1,6 +1,8 @@
 <script lang="ts">
   // Components
   import RecordTile from './RecordTile.svelte';
+  // Styling
+  import cx from 'classnames';
   // Interfaces
   import type { IRecordErrors } from '$lib/schema/validationSchema';
   import type { IRecords } from '$lib/types';
@@ -32,11 +34,6 @@
 
   // Variables
   /**
-   * @description Grid template
-   */
-  const gridTemplateColumns = 'grid-cols-[1fr_5fr_5fr] md:grid-cols-[1fr_7fr_6fr_4fr_2fr]';
-
-  /**
    * @description Sort field, 'created_at' by default
    */
   let sortField: IRecordSortableFields = 'created_at';
@@ -61,75 +58,85 @@
   }
 </script>
 
-<div>
-  <!-- List Header -->
-  <div>
-    <div />
+<div class="mt-4 overflow-x-auto">
+  <table class="table">
+    <!-- List Header -->
+    <thead>
+      <tr>
+        <th></th>
+        <th>
+          <button
+            class={cx('flex gap-1', { 'font-normal': !isSortingField('title') })}
+            on:click={() => changeSortField('title')}
+            >Title
+            {#if isSortingField('title')}
+              {#if sortAsc}
+                <UpArrow />
+              {:else}
+                <DownArrow />
+              {/if}
+            {/if}
+          </button>
+        </th>
 
-    <button
-      class={!isSortingField('title') ? ' font-normal' : ''}
-      on:click={() => changeSortField('title')}
-      >Title
-      {#if isSortingField('title')}
-        {#if sortAsc}
-          <UpArrow />
-        {:else}
-          <DownArrow />
-        {/if}
-      {/if}
-    </button>
+        <th>
+          <button
+            class={cx('flex gap-1', { 'font-normal': !isSortingField('artist') })}
+            on:click={() => changeSortField('artist')}
+            >Artist
+            {#if isSortingField('artist')}
+              {#if sortAsc}
+                <UpArrow />
+              {:else}
+                <DownArrow />
+              {/if}
+            {/if}
+          </button>
+        </th>
 
-    <button
-      class={!isSortingField('artist') ? ' font-normal' : ''}
-      on:click={() => changeSortField('artist')}
-      >Artist
-      {#if isSortingField('artist')}
-        {#if sortAsc}
-          <UpArrow />
-        {:else}
-          <DownArrow />
-        {/if}
-      {/if}
-    </button>
+        <th>
+          <button
+            class={cx('flex gap-1', { 'font-normal': !isSortingField('genre') })}
+            on:click={() => changeSortField('genre')}
+            >Genre
+            {#if isSortingField('genre')}
+              {#if sortAsc}
+                <UpArrow />
+              {:else}
+                <DownArrow />
+              {/if}
+            {/if}
+          </button>
+        </th>
 
-    <button
-      class={!isSortingField('genre') ? ' font-normal' : ''}
-      on:click={() => changeSortField('genre')}
-      >Genre
-      {#if isSortingField('genre')}
-        {#if sortAsc}
-          <UpArrow />
-        {:else}
-          <DownArrow />
-        {/if}
-      {/if}
-    </button>
+        <th>
+          <button
+            class={cx('flex gap-1', { 'font-normal': !isSortingField('year') })}
+            on:click={() => changeSortField('year')}
+            >Year
+            {#if isSortingField('year')}
+              {#if sortAsc}
+                <UpArrow />
+              {:else}
+                <DownArrow />
+              {/if}
+            {/if}
+          </button>
+        </th>
+      </tr>
+    </thead>
 
-    <button
-      class={!isSortingField('year') ? ' font-normal' : ''}
-      on:click={() => changeSortField('year')}
-      >Year
-      {#if isSortingField('year')}
-        {#if sortAsc}
-          <UpArrow />
-        {:else}
-          <DownArrow />
-        {/if}
-      {/if}
-    </button>
-  </div>
-
-  <!-- List Items -->
-  <div>
-    {#each sortedRecordData as recordData, recordIdx}
-      <RecordTile
-        {recordIdx}
-        {recordData}
-        {gridTemplateColumns}
-        {clearFormErrors}
-        {setLoadingCallback}
-        bind:formErrors
-      />
-    {/each}
-  </div>
+    <tbody>
+      <!-- List Items -->
+      {#each sortedRecordData as recordData, recordIdx}
+        <RecordTile
+          {recordIdx}
+          {recordData}
+          {clearFormErrors}
+          {setLoadingCallback}
+          bind:formErrors
+        />
+      {/each}
+    </tbody>
+  </table>
 </div>
