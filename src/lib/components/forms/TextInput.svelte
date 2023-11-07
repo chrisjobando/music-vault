@@ -1,6 +1,8 @@
 <script lang="ts">
+  // Styling
+  import cx from 'classnames';
   // Utils
-  import { marginTop, type IMarginType } from '../utils';
+  import type { IMarginType } from '../utils';
 
   // Props
   /**
@@ -42,15 +44,16 @@
    * @description Input value
    */
   export let value = '';
-
-  // Variables
-  /**
-   * @description Create top margin styling
-   */
-  const topMargin = top ? ` ${marginTop[top]}` : '';
 </script>
 
-<div class="form-control w-full max-w-md{topMargin}">
+<div
+  class={cx('form-control w-full max-w-md', {
+    'mt-2': top === 'sm',
+    'mt-4': top === 'md',
+    'mt-8': top === 'lg',
+    'mt-10': top === 'xl'
+  })}
+>
   <label for={name} class="label">
     <span class="label-text"
       >{label}

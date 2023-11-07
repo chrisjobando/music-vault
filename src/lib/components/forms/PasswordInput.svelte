@@ -1,6 +1,8 @@
 <script lang="ts">
+  // Styling
+  import cx from 'classnames';
   // Utils
-  import { marginTop, type IMarginType } from '../utils';
+  import type { IMarginType } from '../utils';
   // Visibility Icons
   import VisibleIcon from '~icons/mdi/visibility';
   import InvisibleIcon from '~icons/mdi/visibility-off';
@@ -42,11 +44,6 @@
    */
   let showPassword = false;
 
-  /**
-   * @description Top margin styling
-   */
-  const topMargin = top ? ` ${marginTop[top]}` : '';
-
   // Functions
   /**
    * @description Toggles password visibility
@@ -56,7 +53,14 @@
   }
 </script>
 
-<div class="form-control w-full max-w-md{topMargin}">
+<div
+  class={cx('form-control w-full max-w-md', {
+    'mt-2': top === 'sm',
+    'mt-4': top === 'md',
+    'mt-8': top === 'lg',
+    'mt-10': top === 'xl'
+  })}
+>
   <label for={name} class="label">
     <span class="label-text"
       >{label}
